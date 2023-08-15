@@ -5,13 +5,25 @@ public class PlayerAudioManager : SingletonMonoBehaviour<PlayerAudioManager>
 {
     public AudioSource activeAudioSource { get; private set; }
 
-    [Header("Audio Clip")]
+    [Header("FootStep Clips")]
     [SerializeField] private AudioClip stoneFootStep;
     [SerializeField] private AudioClip woodFootStep;
+    [Header("Other Clips")]
+    [SerializeField] private AudioClip windNoise;
 
     public void ChangeActivePlayer()
     {
         activeAudioSource = GameViewMaster.Instance.GetActivePlayerComponent().GetComponent<AudioSource>();
+    }
+    public void StartWindNoise()
+    {
+        if (GetAudioSourcePlaying()) return;
+        activeAudioSource.clip = windNoise;
+        activeAudioSource.Play();
+    }
+    public void StopWindNoise()
+    {
+        activeAudioSource.Stop();
     }
     /// <summary>
     /// 地面が異なるタグになったときと、地面を歩いている状態になったときのみ呼ぶ

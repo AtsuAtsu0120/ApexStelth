@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SteamAudioUnity", "SteamAud
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SteamAudioUnityEditor", "SteamAudioUnityEditor.csproj", "{145EEA2F-9412-6A5C-6E84-E1738579E579}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Polyperfect.Common", "Polyperfect.Common.csproj", "{0164B1DA-CD53-989A-5BB5-B2326E6CD3AF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{145EEA2F-9412-6A5C-6E84-E1738579E579}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{145EEA2F-9412-6A5C-6E84-E1738579E579}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{145EEA2F-9412-6A5C-6E84-E1738579E579}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0164B1DA-CD53-989A-5BB5-B2326E6CD3AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0164B1DA-CD53-989A-5BB5-B2326E6CD3AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0164B1DA-CD53-989A-5BB5-B2326E6CD3AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0164B1DA-CD53-989A-5BB5-B2326E6CD3AF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

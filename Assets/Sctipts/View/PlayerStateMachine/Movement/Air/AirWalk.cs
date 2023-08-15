@@ -9,12 +9,20 @@ public class AirWalk : Walk
     }
     public override void OnEnter()
     {
-        
+
+    }
+    public override void OnExit()
+    {
+
     }
     public override void OnFixedUpdate()
     {
         //èdóÕÇó^Ç¶ÇÈÅB
         stateManager.rb.AddForce(new(0, Physics.gravity.y, 0), ForceMode.Acceleration);
+        if(stateManager.rb.velocity.y < 0)
+        {
+            PlayerAudioManager.Instance.StartWindNoise();
+        }
         base.OnFixedUpdate();
 
         //ï«ÇÃÇ⁄ÇË
@@ -38,6 +46,9 @@ public class AirWalk : Walk
     {
         if(collision.collider.tag.Contains("Ground"))
         {
+            PlayerAudioManager.Instance.StopWindNoise();
+            PlayerAudioManager.Instance.activeAudioSource.time = 0;
+            PlayerAudioManager.Instance.StartFootStep(collision.transform.tag);
             stateManager.ChangeState(new WalkOnGround(stateManager));
         }
     }

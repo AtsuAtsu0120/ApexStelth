@@ -848,7 +848,7 @@ Transform:
   m_GameObject: {fileID: 619687695}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.2376859, z: 0, w: 0.97134215}
-  m_LocalPosition: {x: 68.6, y: 2.9, z: 4.08}
+  m_LocalPosition: {x: 6.1, y: 2.9, z: 41}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -900,7 +900,7 @@ GameObject:
   - component: {fileID: 664743765}
   - component: {fileID: 664743764}
   - component: {fileID: 664743763}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Plane (2)
   m_TagString: WoodGround
   m_Icon: {fileID: 0}
@@ -1356,7 +1356,7 @@ GameObject:
   - component: {fileID: 946630588}
   - component: {fileID: 946630587}
   - component: {fileID: 946630586}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Plane (1)
   m_TagString: StoneGround
   m_Icon: {fileID: 0}
@@ -1784,6 +1784,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1216377831}
   - component: {fileID: 1216377830}
+  - component: {fileID: 1216377832}
   m_Layer: 0
   m_Name: GameManster
   m_TagString: Untagged
@@ -1821,6 +1822,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1216377832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1216377829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5600587e9a96b74d96e3f575e9e2383, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stoneFootStep: {fileID: 8300000, guid: 714a8ae181a2bb347a5243902f4b0e8e, type: 3}
+  woodFootStep: {fileID: 8300000, guid: 8f86eac76cb34fe4f8022fae66db0af3, type: 3}
+  windNoise: {fileID: 8300000, guid: 6cdb3c5b919e8eb4384f9c301bba6800, type: 3}
 --- !u!1 &1330486828
 GameObject:
   m_ObjectHideFlags: 0
@@ -2308,7 +2324,7 @@ PrefabInstance:
     - target: {fileID: 4531755433130025179, guid: 7787c72669c6f63419d9ed848de00573,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 68.6
+      value: 6.1
       objectReference: {fileID: 0}
     - target: {fileID: 4531755433130025179, guid: 7787c72669c6f63419d9ed848de00573,
         type: 3}
@@ -2318,7 +2334,7 @@ PrefabInstance:
     - target: {fileID: 4531755433130025179, guid: 7787c72669c6f63419d9ed848de00573,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.08
+      value: 41
       objectReference: {fileID: 0}
     - target: {fileID: 4531755433130025179, guid: 7787c72669c6f63419d9ed848de00573,
         type: 3}
@@ -2364,6 +2380,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9078680941223168009, guid: 7787c72669c6f63419d9ed848de00573,
+        type: 3}
+      propertyPath: Spatialize
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9078680941223168009, guid: 7787c72669c6f63419d9ed848de00573,
         type: 3}
