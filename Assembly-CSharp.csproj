@@ -754,6 +754,9 @@
     <Reference Include="Unity.Burst.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Burst.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.SelectionGroups">
+      <HintPath>Library\ScriptAssemblies\Unity.SelectionGroups.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.ResourceManager">
       <HintPath>Library\ScriptAssemblies\Unity.ResourceManager.dll</HintPath>
     </Reference>
@@ -780,6 +783,12 @@
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.GoQL.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.GoQL.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.FilmInternalUtilities.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.FilmInternalUtilities.Editor.dll</HintPath>
     </Reference>
     <Reference Include="PPv2URPConverters">
       <HintPath>Library\ScriptAssemblies\PPv2URPConverters.dll</HintPath>
@@ -817,11 +826,11 @@
     <Reference Include="UniTask.TextMeshPro">
       <HintPath>Library\ScriptAssemblies\UniTask.TextMeshPro.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Timeline.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.VisualScripting.Shared.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Timeline.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UniTask.DOTween">
       <HintPath>Library\ScriptAssemblies\UniTask.DOTween.dll</HintPath>
@@ -847,17 +856,23 @@
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.GoQL.Runtime">
+      <HintPath>Library\ScriptAssemblies\Unity.GoQL.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.VisualScripting.Core.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Core.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.CacheServer">
-      <HintPath>Library\ScriptAssemblies\UnityEditor.CacheServer.dll</HintPath>
     </Reference>
     <Reference Include="PrashaltUI">
       <HintPath>Library\ScriptAssemblies\PrashaltUI.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.CacheServer">
+      <HintPath>Library\ScriptAssemblies\UnityEditor.CacheServer.dll</HintPath>
+    </Reference>
     <Reference Include="UniTask.Linq">
       <HintPath>Library\ScriptAssemblies\UniTask.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.SelectionGroups.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.SelectionGroups.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Flow.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
@@ -879,6 +894,9 @@
     </Reference>
     <Reference Include="Unity.Addressables.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Addressables.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.FilmInternalUtilities">
+      <HintPath>Library\ScriptAssemblies\Unity.FilmInternalUtilities.dll</HintPath>
     </Reference>
     <Reference Include="Unity.SysrootPackage.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.SysrootPackage.Editor.dll</HintPath>
