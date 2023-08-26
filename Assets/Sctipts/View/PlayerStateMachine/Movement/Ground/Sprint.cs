@@ -7,6 +7,7 @@ public class Sprint : WalkOnGround
     public override void OnEnter()
     {
         Debug.Log("State is just Sprint");
+        stateManager.animator.SetTrigger("Run");
         Speed = 80;
         MaxSpeed = 18.0f;
     }

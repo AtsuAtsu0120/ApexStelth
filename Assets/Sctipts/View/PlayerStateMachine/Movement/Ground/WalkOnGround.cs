@@ -66,10 +66,16 @@ public class WalkOnGround : Walk
         }
 
         isSpeedZero = isHorizontalMagnitudeZero && isVerticalMagnitudeZero;
+
         //両方ともゼロだったら足音を消す
         if (isSpeedZero && PlayerAudioManager.Instance.GetAudioSourcePlaying())
         {
             PlayerAudioManager.Instance.StopFootStep();
+            stateManager.animator.SetTrigger("Idle");
+        }
+        else
+        {
+            stateManager.animator.SetTrigger("Walk");
         }
 
         //アクションボタンの表示

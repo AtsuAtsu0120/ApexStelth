@@ -33,6 +33,8 @@ public class CharacterStateManager : MonoBehaviour
 
     public GameObject actionButton;
 
+    public Animator animator;
+
     #endregion
 
     #region Fields_State
@@ -78,14 +80,15 @@ public class CharacterStateManager : MonoBehaviour
             PlayerAudioManager.Instance.ChangeActivePlayer();
 
             isInited = true;
+
+
+            //Rigidbody‚Ìæ“¾
+            rb = transform.GetComponent<Rigidbody>();
+            animator = transform.GetComponent<Animator>();
+
+            //ƒJƒƒ‰‚ÌêŠ‚ğæ“¾
+            camTransform = transform.GetChild(0).transform;
         }
-
-
-        //Rigidbody‚Ìæ“¾
-        rb = transform.GetComponent<Rigidbody>();
-
-        //ƒJƒƒ‰‚ÌêŠ‚ğæ“¾
-        camTransform = transform.GetChild(0).transform;
 
         ChangeState(new AirWalk(this));
 
@@ -96,8 +99,6 @@ public class CharacterStateManager : MonoBehaviour
     {
         currentMovementState?.OnUpdate();
         currentViewpointState?.OnUpdate();
-
-        Debug.Log(currentMovementState.GetType());
     }
     private void FixedUpdate()
     {

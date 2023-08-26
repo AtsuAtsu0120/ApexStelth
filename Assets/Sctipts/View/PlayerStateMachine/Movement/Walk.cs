@@ -23,7 +23,7 @@ public abstract class Walk : MovementState
 
     public override void OnEnter()
     {
-
+        stateManager.animator.SetTrigger("Walk");
     }
 
     public override void OnExit()
