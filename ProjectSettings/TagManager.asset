@@ -9,6 +9,8 @@ TagManager:
   - Enemy
   - StoneGround
   - WoodGround
+  - MeadowGround
+  - SandyGround
   layers:
   - Default
   - TransparentFX
@@ -16,9 +18,9 @@ TagManager:
   - Ground
   - Water
   - UI
-  - Player
+  - Player1
+  - Player2
   - Enemy
-  - 
   - 
   - 
   - 

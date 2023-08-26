@@ -8,6 +8,8 @@ public class PlayerAudioManager : SingletonMonoBehaviour<PlayerAudioManager>
     [Header("FootStep Clips")]
     [SerializeField] private AudioClip stoneFootStep;
     [SerializeField] private AudioClip woodFootStep;
+    [SerializeField] private AudioClip sandyFootStep;
+    [SerializeField] private AudioClip meadowFootStep;
     [Header("Other Clips")]
     [SerializeField] private AudioClip windNoise;
 
@@ -36,6 +38,8 @@ public class PlayerAudioManager : SingletonMonoBehaviour<PlayerAudioManager>
         {
             "StoneGround" => stoneFootStep,
             "WoodGround" => woodFootStep,
+            "SandyGround" => sandyFootStep,
+            "MeadowGround" => meadowFootStep,
             _ => null
         };
 

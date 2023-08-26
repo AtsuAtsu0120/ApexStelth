@@ -44,7 +44,6 @@ public class CharacterStateManager : MonoBehaviour
 
     public void Start()
     {
-        Debug.Log("Start");
         //ÉJÅ[É\ÉãÇÃñ≥å¯âª
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -97,6 +96,8 @@ public class CharacterStateManager : MonoBehaviour
     {
         currentMovementState?.OnUpdate();
         currentViewpointState?.OnUpdate();
+
+        Debug.Log(currentMovementState.GetType());
     }
     private void FixedUpdate()
     {

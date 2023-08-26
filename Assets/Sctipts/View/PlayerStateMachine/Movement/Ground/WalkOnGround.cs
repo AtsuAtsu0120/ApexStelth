@@ -38,7 +38,7 @@ public class WalkOnGround : Walk
     }
     public override void OnExitCollider(Collision collision)
     {
-        PlayerAudioManager.Instance.StopFootStep();
+        stateManager.ChangeState(new AirWalk(stateManager));
     }
     public override void OnExit()
     {
