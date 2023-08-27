@@ -19,11 +19,12 @@ public abstract class Walk : MovementState
     {
         Speed = 50.0f;
         MaxSpeed = 15.0f;
+        StraightBonus = 2.0f;
     }
 
     public override void OnEnter()
     {
-        stateManager.animator.SetTrigger("Walk");
+        
     }
 
     public override void OnExit()

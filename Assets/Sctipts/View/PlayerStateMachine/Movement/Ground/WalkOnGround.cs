@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class WalkOnGround : Walk
+public class WalkOnGround : Walk, ICheckGround
 {
     private float JumpPower = 1000.0f;
     private CapsuleCollider collider;
@@ -27,18 +27,15 @@ public class WalkOnGround : Walk
 
     public override void OnEnterCollider(Collision collision)
     {
-        PlayerAudioManager.Instance.StartFootStep(collision.transform.tag);
+        
     }
     public override void OnCollisionStay(Collision collision)
     {
-        if(!isSpeedZero)
-        {
-            PlayerAudioManager.Instance.StartFootStep(collision.transform.tag);
-        }
+
     }
     public override void OnExitCollider(Collision collision)
     {
-        stateManager.ChangeState(new AirWalk(stateManager));
+        
     }
     public override void OnExit()
     {
@@ -67,15 +64,14 @@ public class WalkOnGround : Walk
 
         isSpeedZero = isHorizontalMagnitudeZero && isVerticalMagnitudeZero;
 
+        //設置判定
+        CheckGround();
+
+
         //両方ともゼロだったら足音を消す
         if (isSpeedZero && PlayerAudioManager.Instance.GetAudioSourcePlaying())
         {
             PlayerAudioManager.Instance.StopFootStep();
-            stateManager.animator.SetTrigger("Idle");
-        }
-        else
-        {
-            stateManager.animator.SetTrigger("Walk");
         }
 
         //アクションボタンの表示
@@ -176,5 +172,28 @@ public class WalkOnGround : Walk
 
         //ステートの変更
         stateManager.ChangeState(new Cover(stateManager));
+    }
+
+    public void CheckGround()
+    {
+        var rayRadius = 0.4f;
+        var rayDirection = Vector3.down;
+        var rayDistance = 0.2f;
+        LayerMask layer = 1 << 3;
+
+        RaycastHit hit;
+        var result = Physics.SphereCast(transform.position + 0.5f * Vector3.up, rayRadius, rayDirection, out hit, rayDistance, layer, QueryTriggerInteraction.Ignore);
+
+        if (result)
+        {
+            if (!isSpeedZero)
+            {
+                PlayerAudioManager.Instance.StartFootStep(hit.transform.tag);
+            }
+        }
+        else
+        {
+            stateManager.ChangeState(new AirWalk(stateManager));
+        }
     }
 }

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class AirWalk : Walk
+public class AirWalk : Walk, ICheckGround
 {
     public AirWalk(CharacterStateManager stateManager) : base(stateManager)
     {
@@ -17,6 +17,11 @@ public class AirWalk : Walk
     }
     public override void OnFixedUpdate()
     {
+        base.OnFixedUpdate();
+
+        //設置判定
+        CheckGround();
+
         //重力を与える。
         stateManager.rb.AddForce(new(0, Physics.gravity.y, 0), ForceMode.Acceleration);
         if(stateManager.rb.velocity.y < 0)
@@ -33,6 +38,7 @@ public class AirWalk : Walk
         {
             if (Physics.Raycast(transform.position + Vector3.up * offsetY, direction, out var hit, distance + 0.5f, Physics.AllLayers, QueryTriggerInteraction.Ignore))
             {
+                Debug.Log("クライミング");
                 stateManager.ChangeState(new ClimbWall(stateManager, hit));
                 stateManager.ChangeViewPointState(new WallViewpoint(stateManager));
             }
@@ -44,13 +50,7 @@ public class AirWalk : Walk
     }
     public override void OnEnterCollider(Collision collision)
     {
-        if(collision.collider.tag.Contains("Ground"))
-        {
-            PlayerAudioManager.Instance.StopWindNoise();
-            PlayerAudioManager.Instance.activeAudioSource.time = 0;
-            PlayerAudioManager.Instance.StartFootStep(collision.transform.tag);
-            stateManager.ChangeState(new WalkOnGround(stateManager));
-        }
+
     }
 
     public override void OnCollisionStay(Collision collision)
@@ -60,6 +60,26 @@ public class AirWalk : Walk
 
     public override void OnExitCollider(Collision collision)
     {
-        
+    }
+
+    public void CheckGround()
+    {
+        var rayRadius = 0.4f;
+        var rayDirection = Vector3.down;
+        var rayDistance = 0.2f;
+        LayerMask layer = 1 << 3;
+
+        RaycastHit hit;
+        var result = Physics.SphereCast(transform.position + 0.5f * Vector3.up, rayRadius, rayDirection, out hit, rayDistance, layer, QueryTriggerInteraction.Ignore);
+
+        if (result)
+        {
+            Debug.Log(transform.position);
+
+            PlayerAudioManager.Instance.StopWindNoise();
+            PlayerAudioManager.Instance.activeAudioSource.time = 0;
+            PlayerAudioManager.Instance.StartFootStep(hit.transform.tag);
+            stateManager.ChangeState(new WalkOnGround(stateManager));
+        }
     }
 }

@@ -1,11 +1,10 @@
 using UnityEngine;
 
-public class StelthEnemyComponent : MonoBehaviour
+public class StelthEnemyComponent : StelthNPC
 {
-    [SerializeField] private Enemy enemy;
-
     private bool isReseted = false;
     private bool isQuitting = false;
+
     public bool ShotConfirmeRaycast()
     {
         //敵がプレイヤーを見つける用の処理

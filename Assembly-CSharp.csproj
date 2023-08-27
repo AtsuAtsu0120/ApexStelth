@@ -61,7 +61,6 @@
   <ItemGroup>
     <Compile Include="Assets\Sctipts\View\PlayerStateMachine\Viewpoint\CrouchViewpoint.cs" />
     <Compile Include="Assets\Sctipts\View\PlayerStateMachine\MovementState.cs" />
-    <Compile Include="Assets\Sctipts\View\StelthEnemyComponent.cs" />
     <Compile Include="Assets\Sctipts\View\PlayerStateMachine\Movement\Ground\Sprint.cs" />
     <Compile Include="Assets\Sctipts\View\PlayerStateMachine\Viewpoint\WallViewpoint.cs" />
     <Compile Include="Assets\Sctipts\View\Player.cs" />
@@ -72,16 +71,19 @@
     <Compile Include="Assets\Sctipts\View\PlayerStateMachine\Movement\Air\AirAfterClimb.cs" />
     <Compile Include="Assets\Sctipts\View\PlayerStateMachine\Movement\Air\AirWalk.cs" />
     <Compile Include="Assets\Sctipts\View\PlayerStateMachine\Movement\Other\ClimbWall.cs" />
+    <Compile Include="Assets\Sctipts\Others\NPCObject.cs" />
     <Compile Include="Assets\Sctipts\Others\Side.cs" />
     <Compile Include="Assets\Sctipts\View\Audio\PlayerAudioManager.cs" />
     <Compile Include="Assets\Sctipts\View\PlayerStateMachine\Viewpoint\Overlooking.cs" />
     <Compile Include="Assets\Sctipts\View\PlayerStateMachine\Movement\Air\AirCrouch.cs" />
+    <Compile Include="Assets\Sctipts\LogicModel\Interface\ICheckGround.cs" />
     <Compile Include="Assets\Sctipts\View\PlayerStateMachine\Movement\Walk.cs" />
     <Compile Include="Assets\Sctipts\View\GameViewMaster.cs" />
     <Compile Include="Assets\Settings\StelthInputActions.cs" />
     <Compile Include="Assets\Sctipts\View\CharacterStateManager.cs" />
     <Compile Include="Assets\Sctipts\View\PlayerStateMachine\Viewpoint\ViewPointAfterCrouch.cs" />
-    <Compile Include="Assets\Sctipts\Others\Enemy.cs" />
+    <Compile Include="Assets\Sctipts\View\NPC\StelthEnemyComponent.cs" />
+    <Compile Include="Assets\Sctipts\View\NPC\StelthNPC.cs" />
     <Compile Include="Assets\Sctipts\View\PlayerStateMachine\Viewpoint\NormalViewpoint.cs" />
     <Compile Include="Assets\Sctipts\Others\StelthUtility.cs" />
     <Compile Include="Assets\Sctipts\View\PlayerStateMachine\ViewpointState.cs" />

@@ -1,6 +1,3 @@
-using Cysharp.Threading.Tasks;
-using Unity.Collections;
-using Unity.Jobs;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -102,6 +99,7 @@ public class CharacterStateManager : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        animator.SetFloat("Speed", rb.velocity.z + rb.velocity.x);
         currentMovementState?.OnFixedUpdate();
     }
     private void OnCollisionEnter(Collision collision)
@@ -116,7 +114,7 @@ public class CharacterStateManager : MonoBehaviour
     {
         currentMovementState.OnExitCollider(collision);
     }
-    public void ChangeState(MovementState state)
+    public void ChangeState(MovementState newState)
     {
         ////キーをリセット
         if (currentMovementState is not null)
@@ -130,7 +128,7 @@ public class CharacterStateManager : MonoBehaviour
         }
 
         currentMovementState?.OnExit();
-        currentMovementState = state;
+        currentMovementState = newState;
 
         //キーを設定
         upAction.performed += currentMovementState.OnPerformUp;
