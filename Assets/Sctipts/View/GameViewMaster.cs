@@ -1,3 +1,5 @@
+using Cysharp.Threading.Tasks;
+using Prashalt.Unity.ConversationGraph.Conponents;
 using Prashalt.Unity.Utility.Superclass;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,9 +8,15 @@ using static UnityEngine.InputSystem.InputAction;
 public class GameViewMaster : SingletonMonoBehaviour<GameViewMaster>
 {
     [SerializeField] private Slider confirmedPercent;
+    [SerializeField] private ConversationSystemUGUI conversationSystemUGUI;
 
     [SerializeField] private GameObject player1Obj;
     [SerializeField] private GameObject player2Obj;
+
+    [SerializeField] private Transform player1SpawnPoint;
+    [SerializeField] private Transform player2SpawnPoint;
+
+    [SerializeField] private GameObject textUI;
 
     private Player player1;
     private Player player2;
@@ -21,6 +29,14 @@ public class GameViewMaster : SingletonMonoBehaviour<GameViewMaster>
         player2 = player2Obj.GetComponent<Player>();
     }
 
+    protected void Start()
+    {
+        conversationSystemUGUI.StartConversation();
+        conversationSystemUGUI.OnConversationFinishedEvent += () => textUI.SetActive(false);
+
+        player1Obj.transform.position= player1SpawnPoint.position;
+        player2Obj.transform.position = player2SpawnPoint.position;
+    }
     private void Update()
     {
         var playerComponent = GetActivePlayerComponent();
@@ -58,6 +74,5 @@ public class GameViewMaster : SingletonMonoBehaviour<GameViewMaster>
 
             isPlayer1Active = true;
         }
-
     }
 }

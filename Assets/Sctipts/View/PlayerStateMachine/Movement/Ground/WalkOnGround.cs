@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class WalkOnGround : Walk, ICheckGround
 {
-    private float JumpPower = 1000.0f;
+    private float JumpPower = 500.0f;
     private CapsuleCollider collider;
     private RaycastHit hit;
     private Side facingSide;
@@ -48,6 +48,7 @@ public class WalkOnGround : Walk, ICheckGround
 
         var isHorizontalMagnitudeZero = Vector3.Magnitude(horizontalForce) == 0;
         var isVerticalMagnitudeZero = Vector3.Magnitude(verticalForce) == 0;
+
         //慣性をなくす
         if (isHorizontalMagnitudeZero)
         {
@@ -79,40 +80,46 @@ public class WalkOnGround : Walk, ICheckGround
         var rayDistance = 8.0f;
         var rayHalfExraytents = new Vector3(0.2f, 0.2f, 0.2f);
         var rayDirection = stateManager.camTransform.forward; //プレイヤーはy方向の角度が変わらないのでカメラの正面を使う
-        var isAbleAction = true;
+        var enableAction = true;
         var layer = ~(1 << 6 | 1 << 7 | 1 << 3);
+
         if (Physics.BoxCast(transform.position + Vector3.up * rayOffsetY, rayHalfExraytents, rayDirection, out var hit, Quaternion.identity, rayDistance, layer, QueryTriggerInteraction.Ignore))
         {
-            //端を計算する
-            //設置点を取得
-            var castPoint = hit.point;
-            //設置点とオブジェクトの中心の距離を取る
-            var distance = Vector3.Distance(castPoint, hit.transform.position);
-
-            //オブジェクトの相対的な長さを取得する。
-            facingSide = StelthUtility.GetFacingSide(hit);
-            var hitObjectEdgeDirection = StelthUtility.GetObjectEdgeDirection(facingSide, hit.transform);
-
-            //オブジェクトの長さを0.8倍してカバーの範囲を決定する
-            hitObjectEdgeDirection *= 0.8f;
-
-            //距離が多かったらそのオブジェクトの端であることから、カバーができるようボタンを表示する。
-            if (distance > hitObjectEdgeDirection)
+            //カバー以外のアクション可能オブジェクト
+            if(hit.transform.TryGetComponent<IActionable>(out var component))
             {
-                OnAbleCover(hit);
+                action = component.OnActionKey;
             }
+            //カバー
             else
             {
-                isAbleAction = false;
+                //端を計算する
+                //設置点を取得
+                var castPoint = hit.point;
+                //設置点とオブジェクトの中心の距離を取る
+                var distance = Vector3.Distance(castPoint, hit.transform.position);
+
+                //オブジェクトの相対的な長さを取得する。
+                facingSide = StelthUtility.GetFacingSide(hit);
+                var hitObjectEdgeDirection = StelthUtility.GetObjectEdgeDirection(facingSide, hit.transform);
+
+                //オブジェクトの長さを0.8倍してカバーの範囲を決定する
+                hitObjectEdgeDirection *= 0.8f;
+
+                //距離が多かったらそのオブジェクトの端であることから、カバーができるようボタンを表示する。
+                if (distance > hitObjectEdgeDirection)
+                {
+                    OnAbleCover(hit);
+                }
+                else
+                {
+                    enableAction = false;
+                }
             }
-        }
-        else
-        {
-            isAbleAction = false;
-        }
+        }    
 
         //アクションボタンを非表示にする。
-        if (!isAbleAction)
+        if (!enableAction)
         {
             stateManager.actionButton.SetActive(false);
         }
@@ -120,7 +127,7 @@ public class WalkOnGround : Walk, ICheckGround
 
     public override void OnPerformUp(InputAction.CallbackContext ctx)
     {
-        stateManager.rb.AddForce(new (0.0f, JumpPower, 0.0f));
+        stateManager.rb.AddForce(new (0.0f, JumpPower, 0.0f), ForceMode.Acceleration);
         stateManager.ChangeState(new AirWalk(stateManager));
     }
     public override void OnPerformSprint(InputAction.CallbackContext ctx)
@@ -145,7 +152,7 @@ public class WalkOnGround : Walk, ICheckGround
     public void OnCoverAction()
     {
         //ポジションを変更
-        collider ??= transform.GetComponent<CapsuleCollider>();
+        collider ??= transform.GetComponentInChildren<CapsuleCollider>();
         var coverPosition = facingSide switch
         {
             Side.Forward => hit.point + hit.transform.forward * collider.radius,
@@ -193,6 +200,7 @@ public class WalkOnGround : Walk, ICheckGround
         }
         else
         {
+            Debug.Log("地面から浮いたよ！");
             stateManager.ChangeState(new AirWalk(stateManager));
         }
     }

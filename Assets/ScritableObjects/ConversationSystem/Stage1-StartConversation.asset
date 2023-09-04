@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13618a0c31298d54eaf8a66d5fa5d982, type: 3}
+  m_Name: Stage1-StartConversation
+  m_EditorClassIdentifier: 
+  _nodes:
+  - guid: 2609f6a62e274bce808a13b6723dd582
+    typeName: Prashalt.Unity.ConversationGraph.Nodes.StartNode
+    rect:
+      serializedVersion: 2
+      x: 100
+      y: 150
+      width: 74
+      height: 77
+    json: '{"textList":[]}'
+  - guid: 02451cfc807a463483cbd5a48cd7fc74
+    typeName: Prashalt.Unity.ConversationGraph.Nodes.EndNode
+    rect:
+      serializedVersion: 2
+      x: 797
+      y: 86
+      width: 68
+      height: 77
+    json: '{"textList":[]}'
+  - guid: a893108b39fa44e485f38bd01cafeb65
+    typeName: Prashalt.Unity.ConversationGraph.Nodes.SpeakerNode
+    rect:
+      serializedVersion: 2
+      x: 404
+      y: 106
+      width: 208
+      height: 242
+    json: "{\"textList\":[\"\u3053\u3053\u306F\u53E4\u304F\u304B\u3089\u3042\u308B\u76E3\u7344\u306E\u5CF6\u3002\",\"\u6700\u8FD1\u306A\u306B\u304B\u4E0D\u601D\u8B70\u306A\u52D5\u5411\u304C\u898B\u3089\u308C\u308B\u3093\u3060\u3002\",\"\u306A\u306B\u304C\u3042\u308B\u304B\u8ABF\u3079\u3066\u304D\u3066\u307B\u3057\u3044\u3002\"],\"speakerName\":\"\u53F8\u4EE4\u90E8\"}"
+  _edges:
+  - guid: e342485473df4c718cc7c1cae62ea4db
+    baseNodeGuid: 2609f6a62e274bce808a13b6723dd582
+    targetNodeGuid: a893108b39fa44e485f38bd01cafeb65
+  - guid: faa5dc901f8f4a13ac5244ec9a604269
+    baseNodeGuid: a893108b39fa44e485f38bd01cafeb65
+    targetNodeGuid: 02451cfc807a463483cbd5a48cd7fc74
+  settings:
+    isNeedClick: 0
+    shouldTextAnimation: 1
+    switchingSpeed: 1000
+    animationSpeed: 100

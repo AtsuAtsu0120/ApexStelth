@@ -22,8 +22,6 @@ public class AirWalk : Walk, ICheckGround
         //İ’u”»’è
         CheckGround();
 
-        //d—Í‚ğ—^‚¦‚éB
-        stateManager.rb.AddForce(new(0, Physics.gravity.y, 0), ForceMode.Acceleration);
         if(stateManager.rb.velocity.y < 0)
         {
             PlayerAudioManager.Instance.StartWindNoise();
@@ -74,8 +72,6 @@ public class AirWalk : Walk, ICheckGround
 
         if (result)
         {
-            Debug.Log(transform.position);
-
             PlayerAudioManager.Instance.StopWindNoise();
             PlayerAudioManager.Instance.activeAudioSource.time = 0;
             PlayerAudioManager.Instance.StartFootStep(hit.transform.tag);

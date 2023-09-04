@@ -42,7 +42,7 @@ public class Cover : MovementState
 
     public override void OnExitCollider(Collision collision)
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public override void OnFixedUpdate()

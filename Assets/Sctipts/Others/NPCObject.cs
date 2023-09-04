@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [CreateAssetMenu]
 public class NPCObject : ScriptableObject
@@ -9,4 +10,5 @@ public class NPCObject : ScriptableObject
     /// </summary>
     [SerializeField] public List<Vector4> PassPositionList = new();
     [SerializeField] public bool shouldRandomMove;
+    [SerializeField] public UnityEvent unityEvent;
 }

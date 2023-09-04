@@ -8,6 +8,6 @@
 
 /.vs
 /.vscode
-.vsconfig
-.sln
-.csproj
+*.vsconfig
+*.sln
+*.csproj

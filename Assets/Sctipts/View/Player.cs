@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
         NearEnemies = _nearEnemies.AsReadOnly();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         ShotEnemyRaycast();
     }
@@ -57,11 +57,13 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.TryGetComponent<StelthEnemyComponent>(out var component))
+        if(other.CompareTag("Enemy"))
         {
+            var component = other.transform.parent.GetComponent<StelthEnemyComponent>();
             if (!_nearEnemies.Contains(component))
             {
                 _nearEnemies.Add(component);
+                Debug.Log("ENTER");
             }
         }
     }

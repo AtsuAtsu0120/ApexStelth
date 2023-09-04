@@ -44,8 +44,10 @@ public abstract class Walk : MovementState
         verticalForce = forward * inputVector.z;
 
         //力を与える
-        stateManager.rb.AddForce(verticalForce);
-        stateManager.rb.AddForce(horizontalForce);
+        stateManager.rb.AddForce(verticalForce, ForceMode.Acceleration);
+        stateManager.rb.AddForce(horizontalForce, ForceMode.Acceleration);
+
+        stateManager.rb.AddForce(new(0, Physics.gravity.y, 0), ForceMode.Acceleration);
 
         var forceLocalDirection = transform.InverseTransformDirection(verticalForce);
         //方向によって速度ボーナスを与えれる。

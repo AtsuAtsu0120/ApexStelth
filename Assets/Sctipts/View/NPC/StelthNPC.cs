@@ -10,16 +10,34 @@ public class StelthNPC : MonoBehaviour
 {
     [SerializeField] private NPCObject npc;
     [SerializeField] private NavMeshAgent agent;
+    [SerializeField] private Animator animator;
+
     private int nowPositionIndex;
 
     private float waitTime;
 
     public void Start()
     {
-        RandomList();  
+        agent.updatePosition = false;
+        RandomList();
     }
     public void FixedUpdate()
     {
+        // 足滑りなしのアニメーション
+        // nextPositionからdeltaPositionを算出
+        var worldDeltaPosition = agent.nextPosition - transform.position;
+
+        // キャラクターを基点にしたxz平面に射影したdeltaPosition
+        var dx = Vector3.Dot(transform.right, worldDeltaPosition);
+        var dy = Vector3.Dot(transform.forward, worldDeltaPosition);
+        Vector2 deltaPosition = new Vector2(dx, dy);
+
+        // Time.deltaTimeから速度を算出
+        var velocity = deltaPosition / Time.deltaTime;
+
+        animator.SetFloat("Speed", velocity.y);
+        transform.position = agent.nextPosition;
+
         var hasIndexNext = nowPositionIndex < npc.PassPositionList.Count - 1;
         bool canGoing;
 
@@ -35,7 +53,6 @@ public class StelthNPC : MonoBehaviour
         var isGoal = agent.remainingDistance <= 0.1f;
         if (isGoal && canGoing)
         {
-            Debug.Log("目的地の更新");
             //待ち時間のリセット
             waitTime = 0;
 
@@ -54,8 +71,6 @@ public class StelthNPC : MonoBehaviour
         {
             waitTime += Time.fixedDeltaTime;
         }
-
-        Debug.Log(waitTime);
     }
     private void RandomList()
     {
