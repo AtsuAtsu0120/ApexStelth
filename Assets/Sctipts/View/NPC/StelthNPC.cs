@@ -23,6 +23,10 @@ public class StelthNPC : MonoBehaviour
     }
     public void FixedUpdate()
     {
+        if(npc is null)
+        {
+            return;
+        }
         // 足滑りなしのアニメーション
         // nextPositionからdeltaPositionを算出
         var worldDeltaPosition = agent.nextPosition - transform.position;

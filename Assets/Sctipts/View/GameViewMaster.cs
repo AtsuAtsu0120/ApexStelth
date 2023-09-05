@@ -8,7 +8,7 @@ using static UnityEngine.InputSystem.InputAction;
 public class GameViewMaster : SingletonMonoBehaviour<GameViewMaster>
 {
     [SerializeField] private Slider confirmedPercent;
-    [SerializeField] private ConversationSystemUGUI conversationSystemUGUI;
+    public ConversationSystemUGUI conversationSystemUGUI { get; private set; }
 
     [SerializeField] private GameObject player1Obj;
     [SerializeField] private GameObject player2Obj;
@@ -20,19 +20,21 @@ public class GameViewMaster : SingletonMonoBehaviour<GameViewMaster>
 
     private Player player1;
     private Player player2;
-    private bool isPlayer1Active;
     protected override void Awake()
     {
         base.Awake();
 
         player1 = player1Obj.GetComponent<Player>();
         player2 = player2Obj.GetComponent<Player>();
+
+        conversationSystemUGUI = GetComponent<ConversationSystemUGUI>();
     }
 
     protected void Start()
     {
-        conversationSystemUGUI.StartConversation();
-        conversationSystemUGUI.OnConversationFinishedEvent += () => textUI.SetActive(false);
+        //conversationSystemUGUI.StartConversation();
+        //conversationSystemUGUI.OnConversationFinishedEvent += () => textUI.SetActive(false);
+        //conversationSystemUGUI.OnConversationStartEvent += () => textUI.SetActive(true);
 
         player1Obj.transform.position= player1SpawnPoint.position;
         player2Obj.transform.position = player2SpawnPoint.position;
@@ -60,19 +62,19 @@ public class GameViewMaster : SingletonMonoBehaviour<GameViewMaster>
     }
     public void ChangePlayer(CallbackContext _)
     {
-        if (isPlayer1Active)
+        if (GameLogicMaster.Instance.IsPlayer1Active)
         {
             player1Obj.SetActive(false);
             player2Obj.SetActive(true);
 
-            isPlayer1Active = false;
+            GameLogicMaster.Instance.IsPlayer1Active = false;
         }
         else
         {
             player1Obj.SetActive(true);
             player2Obj.SetActive(false);
 
-            isPlayer1Active = true;
+            GameLogicMaster.Instance.IsPlayer1Active = true;
         }
     }
 }

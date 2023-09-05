@@ -6,11 +6,11 @@ TagManager:
   tags:
   - CinemachineTarget
   - AbleCover
-  - Enemy
   - StoneGround
   - WoodGround
   - MeadowGround
   - SandyGround
+  - NPC
   layers:
   - Default
   - TransparentFX
@@ -21,7 +21,7 @@ TagManager:
   - Player1
   - Player2
   - Enemy
-  - 
+  - Door
   - 
   - 
   - 

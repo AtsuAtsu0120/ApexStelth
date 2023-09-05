@@ -78,7 +78,6 @@ public class CharacterStateManager : MonoBehaviour
 
             isInited = true;
 
-
             //Rigidbody�̎擾
             rb = transform.GetComponent<Rigidbody>();
             animator = transform.GetComponent<Animator>();

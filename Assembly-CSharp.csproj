@@ -90,6 +90,7 @@
     <Compile Include="Assets\Sctipts\Others\StelthUtility.cs" />
     <Compile Include="Assets\Sctipts\View\PlayerStateMachine\ViewpointState.cs" />
     <Compile Include="Assets\Sctipts\View\PlayerStateMachine\Movement\Ground\WalkOnGround.cs" />
+    <Compile Include="Assets\Sctipts\View\ObjectCompoents\BuildingsEnterDoor.cs" />
     <Compile Include="Assets\Sctipts\View\PlayerStateMachine\Movement\Ground\Crouch.cs" />
   </ItemGroup>
   <ItemGroup>

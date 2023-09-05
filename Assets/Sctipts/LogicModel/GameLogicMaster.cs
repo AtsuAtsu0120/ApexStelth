@@ -8,7 +8,7 @@ using UnityEngine;
 
 public class GameLogicMaster : PureSingleton<GameLogicMaster>
 {
-    public bool IsPlayer1Active { get; private set; } = true;
+    public bool IsPlayer1Active { get; set; } = true;
 
     #region Property
 
