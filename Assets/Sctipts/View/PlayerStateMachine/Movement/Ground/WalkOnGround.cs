@@ -76,14 +76,13 @@ public class WalkOnGround : Walk, ICheckGround
         }
 
         //アクションボタンの表示
-        var rayOffsetY = 0.5f;
         var rayDistance = 8.0f;
-        var rayHalfExraytents = new Vector3(0.2f, 0.2f, 0.2f);
+        var rayHalfExraytents = new Vector3(0.1f, 0.1f, 0.1f);
         var rayDirection = stateManager.camTransform.forward; //プレイヤーはy方向の角度が変わらないのでカメラの正面を使う
         var enableAction = true;
-        var layer = ~(1 << 6 | 1 << 7 | 1 << 3);
+        var layer = ~(1 << 6 | 1 << 7 | 1 << 3 | 1 << 2);
 
-        if (Physics.BoxCast(transform.position + Vector3.up * rayOffsetY, rayHalfExraytents, rayDirection, out var hit, Quaternion.identity, rayDistance, layer, QueryTriggerInteraction.Ignore))
+        if (Physics.BoxCast(stateManager.camTransform.position, rayHalfExraytents, rayDirection, out var hit, Quaternion.identity, rayDistance, layer, QueryTriggerInteraction.Ignore))
         {
             //カバー以外のアクション可能オブジェクト
             if(hit.transform.TryGetComponent<IActionable>(out var component))

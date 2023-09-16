@@ -62,14 +62,18 @@
     <Compile Include="Assets\Sctipts\View\PlayerStateMachine\Viewpoint\CrouchViewpoint.cs" />
     <Compile Include="Assets\Sctipts\View\PlayerStateMachine\MovementState.cs" />
     <Compile Include="Assets\Sctipts\LogicModel\Interface\IActionable.cs" />
+    <Compile Include="Assets\Sctipts\View\ObjectCompoents\Key.cs" />
+    <Compile Include="Assets\Sctipts\LogicModel\Mission\Mission.cs" />
     <Compile Include="Assets\Sctipts\View\PlayerStateMachine\Movement\Ground\Sprint.cs" />
     <Compile Include="Assets\Sctipts\View\PlayerStateMachine\Viewpoint\WallViewpoint.cs" />
     <Compile Include="Assets\Sctipts\View\Player.cs" />
     <Compile Include="Assets\Sctipts\View\CharacterController.cs" />
     <Compile Include="Assets\Sctipts\View\PlayerStateMachine\Movement\Other\Cover.cs" />
     <Compile Include="Assets\Sctipts\Test.cs" />
+    <Compile Include="Assets\Sctipts\LogicModel\Stage\Stage.cs" />
     <Compile Include="Assets\Sctipts\LogicModel\GameLogicMaster.cs" />
     <Compile Include="Assets\Sctipts\View\PlayerStateMachine\Movement\Air\AirAfterClimb.cs" />
+    <Compile Include="Assets\Sctipts\LogicModel\Stage\Stage1.cs" />
     <Compile Include="Assets\Sctipts\View\PlayerStateMachine\Movement\Air\AirWalk.cs" />
     <Compile Include="Assets\Sctipts\View\PlayerStateMachine\Movement\Other\ClimbWall.cs" />
     <Compile Include="Assets\Sctipts\Others\NPCObject.cs" />
@@ -79,7 +83,9 @@
     <Compile Include="Assets\Sctipts\View\PlayerStateMachine\Viewpoint\Overlooking.cs" />
     <Compile Include="Assets\Sctipts\View\PlayerStateMachine\Movement\Air\AirCrouch.cs" />
     <Compile Include="Assets\Sctipts\LogicModel\Interface\ICheckGround.cs" />
+    <Compile Include="Assets\Sctipts\View\ObjectCompoents\ConversationObject.cs" />
     <Compile Include="Assets\Sctipts\View\PlayerStateMachine\Movement\Walk.cs" />
+    <Compile Include="Assets\Sctipts\View\ObjectCompoents\TargetConversation.cs" />
     <Compile Include="Assets\Sctipts\View\GameViewMaster.cs" />
     <Compile Include="Assets\Settings\StelthInputActions.cs" />
     <Compile Include="Assets\Sctipts\View\CharacterStateManager.cs" />
@@ -87,10 +93,12 @@
     <Compile Include="Assets\Sctipts\View\NPC\StelthEnemyComponent.cs" />
     <Compile Include="Assets\Sctipts\View\NPC\StelthNPC.cs" />
     <Compile Include="Assets\Sctipts\View\PlayerStateMachine\Viewpoint\NormalViewpoint.cs" />
+    <Compile Include="Assets\Sctipts\LogicModel\Mission\Stage1Mission.cs" />
     <Compile Include="Assets\Sctipts\Others\StelthUtility.cs" />
     <Compile Include="Assets\Sctipts\View\PlayerStateMachine\ViewpointState.cs" />
     <Compile Include="Assets\Sctipts\View\PlayerStateMachine\Movement\Ground\WalkOnGround.cs" />
     <Compile Include="Assets\Sctipts\View\ObjectCompoents\BuildingsEnterDoor.cs" />
+    <Compile Include="Assets\Sctipts\View\ObjectCompoents\LockedDoor.cs" />
     <Compile Include="Assets\Sctipts\View\PlayerStateMachine\Movement\Ground\Crouch.cs" />
   </ItemGroup>
   <ItemGroup>

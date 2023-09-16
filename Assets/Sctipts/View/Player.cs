@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
     private List<StelthEnemyComponent> _nearEnemies;
     public ReadOnlyCollection<StelthEnemyComponent> NearEnemies { get; private set; }
 
+    public List<Key> hasKeys { get; private set; } = new();
+
     private int playerNumber;
     protected void Awake()
     {

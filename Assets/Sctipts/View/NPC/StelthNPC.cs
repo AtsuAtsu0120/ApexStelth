@@ -18,6 +18,10 @@ public class StelthNPC : MonoBehaviour
 
     public void Start()
     {
+        if (npc is null)
+        {
+            return;
+        }
         agent.updatePosition = false;
         RandomList();
     }

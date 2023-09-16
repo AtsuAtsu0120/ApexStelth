@@ -1,6 +1,7 @@
 using Cysharp.Threading.Tasks;
 using Prashalt.Unity.ConversationGraph.Conponents;
 using Prashalt.Unity.Utility.Superclass;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using static UnityEngine.InputSystem.InputAction;
@@ -18,6 +19,9 @@ public class GameViewMaster : SingletonMonoBehaviour<GameViewMaster>
 
     [SerializeField] private GameObject textUI;
 
+    [SerializeField] private GameObject missionPrefab;
+    [SerializeField] private GameObject missionParent;
+
     private Player player1;
     private Player player2;
     protected override void Awake()
@@ -32,12 +36,14 @@ public class GameViewMaster : SingletonMonoBehaviour<GameViewMaster>
 
     protected void Start()
     {
-        //conversationSystemUGUI.StartConversation();
-        //conversationSystemUGUI.OnConversationFinishedEvent += () => textUI.SetActive(false);
-        //conversationSystemUGUI.OnConversationStartEvent += () => textUI.SetActive(true);
+        conversationSystemUGUI.StartConversation();
+        conversationSystemUGUI.OnConversationFinishedEvent += () => textUI.SetActive(false);
+        conversationSystemUGUI.OnConversationStartEvent += () => textUI.SetActive(true);
 
-        player1Obj.transform.position= player1SpawnPoint.position;
+        player1Obj.transform.position = player1SpawnPoint.position;
         player2Obj.transform.position = player2SpawnPoint.position;
+
+        UpdateMissonView();
     }
     private void Update()
     {
@@ -75,6 +81,20 @@ public class GameViewMaster : SingletonMonoBehaviour<GameViewMaster>
             player2Obj.SetActive(false);
 
             GameLogicMaster.Instance.IsPlayer1Active = true;
+        }
+    }
+    public void UpdateMissonView()
+    {
+        foreach (var mission in GameLogicMaster.Instance.stageInfo.Missions)
+        {
+            if (mission.State != MissionState.workInProgress)
+            {
+                return;
+            }
+            var instance = Instantiate(missionPrefab, missionParent.transform);
+            var texts = instance.GetComponentsInChildren<TextMeshProUGUI>();
+            texts[0].text = mission.Name;
+            texts[1].text = mission.Description;
         }
     }
 }

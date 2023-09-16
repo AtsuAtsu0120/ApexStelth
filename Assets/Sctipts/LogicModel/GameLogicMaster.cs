@@ -20,6 +20,8 @@ public class GameLogicMaster : PureSingleton<GameLogicMaster>
 
     public StelthInputActions Actions { get; set; }
 
+    public Stage stageInfo = new Stage1(GameViewMaster.Instance.UpdateMissonView);
+
     #endregion
     #region Private_Field
 
@@ -113,6 +115,10 @@ public class GameLogicMaster : PureSingleton<GameLogicMaster>
         {
             result[0] = confirmedPercent - 0.05f;
         }
+    }
+    public void ChangeMissionView()
+    {
+
     }
     #endregion
 }

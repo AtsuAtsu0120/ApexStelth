@@ -27,6 +27,7 @@ public class ClimbWall : MovementState
     {
         if (MaxClimbSpeed < 0)
         {
+            Debug.Log("Speedがゼロに");
             CancelWall();
         }
         else
@@ -39,14 +40,16 @@ public class ClimbWall : MovementState
             //入力から計算する。
             var horizontalForce = right * inputVector.x;
             var upForce = up * inputVector.z;
+
             stateManager.rb.AddForce(upForce);
             stateManager.rb.AddForce(horizontalForce);
             //最大速度を設定
-            stateManager.rb.velocity = Vector3.ClampMagnitude(stateManager.rb.velocity, MaxClimbSpeed); 
+            stateManager.rb.velocity = Vector3.ClampMagnitude(stateManager.rb.velocity, MaxClimbSpeed);
         }
         //壁がなくなったらやめる用
-        if (Physics.Raycast(stateManager.transform.position + Vector3.up * 0.5f, stateManager.transform.forward, out var hit, 3.5f, Physics.AllLayers, QueryTriggerInteraction.Ignore))
+        if (!Physics.Raycast(stateManager.camTransform.position, stateManager.camTransform.forward, 3.5f, Physics.AllLayers, QueryTriggerInteraction.Ignore))
         {
+            Debug.Log("壁がないです");
             CancelWall();
         }
 
@@ -69,6 +72,7 @@ public class ClimbWall : MovementState
 
     public override void OnPerformDown(InputAction.CallbackContext ctx)
     {
+        Debug.Log("しゃがんだので");
         CancelWall();
     }
 
@@ -77,6 +81,7 @@ public class ClimbWall : MovementState
         
     }
 
+    //壁ジャン
     public override void OnPerformUp(InputAction.CallbackContext ctx)
     {
         var fwdSpeed = Vector3.Dot(stateManager.rb.velocity, stateManager.transform.forward);
@@ -86,6 +91,7 @@ public class ClimbWall : MovementState
             refrectVector.y += 0.3f;
             stateManager.rb.AddForce(refrectVector * 1000, ForceMode.Acceleration);
         }
+        Debug.Log("壁ジャンしたので");
         CancelWall();
     }
 
@@ -105,11 +111,11 @@ public class ClimbWall : MovementState
 
     public override void OnCancelUp(InputAction.CallbackContext ctx)
     {
-        CancelWall();
     }
 
     private void CancelWall()
     {
+        Debug.Log("何らかの理由でクライミングがキャンセル");
         stateManager.ChangeState(new AirAfterClimb(stateManager));
         stateManager.ChangeViewPointState(new NormalViewpoint(stateManager));
     }
