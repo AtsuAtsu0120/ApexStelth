@@ -12,7 +12,7 @@ public abstract class Mission
     public MissionState State { get; set; }
     public string Name { get; protected set; }
     public string Description { get; protected set; }
-    public bool IsComplete { get; protected set; }
+    public bool IsOptinal { get; protected set; } = false;
 
     public Action OnChangeState;
     public virtual void OnComplete()

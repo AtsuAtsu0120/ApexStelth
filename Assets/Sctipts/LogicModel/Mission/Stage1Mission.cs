@@ -24,6 +24,7 @@ public class MeetTarget : Mission
         Name = "\"úl\"(”CˆÓ)";
         Description = "˜S‰®‚Åî•ñ‚ğ•·‚«o‚¹B";
         State = MissionState.workInProgress;
+        IsOptinal = true;
     }
     public override void OnComplete()
     {
@@ -37,6 +38,7 @@ public class GoCave : Mission
         Name = "“´ŒA‚Ì“ä";
         Description = "“´ŒA‚Ös‚¯B";
         State = MissionState.Inactive;
+        IsOptinal = true;
     }
     public override void OnComplete()
     {

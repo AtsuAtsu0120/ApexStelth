@@ -1,3 +1,5 @@
+using System.ComponentModel.Design.Serialization;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -40,6 +42,7 @@ public class WalkOnGround : Walk, ICheckGround
     public override void OnExit()
     {
         PlayerAudioManager.Instance.StopFootStep();
+        stateManager.actionButton.SetActive(false);
     }
 
     public override void OnFixedUpdate()
@@ -88,6 +91,7 @@ public class WalkOnGround : Walk, ICheckGround
             if(hit.transform.TryGetComponent<IActionable>(out var component))
             {
                 action = component.OnActionKey;
+                enableAction = true;
             }
             //カバー
             else
@@ -115,13 +119,14 @@ public class WalkOnGround : Walk, ICheckGround
                     enableAction = false;
                 }
             }
-        }    
-
-        //アクションボタンを非表示にする。
-        if (!enableAction)
-        {
-            stateManager.actionButton.SetActive(false);
         }
+        else
+        {
+            enableAction = false;
+        }
+
+        //アクションボタンを表示する。
+        stateManager.actionButton.SetActive(enableAction);
     }
 
     public override void OnPerformUp(InputAction.CallbackContext ctx)
@@ -144,7 +149,6 @@ public class WalkOnGround : Walk, ICheckGround
 
     public void OnAbleCover(RaycastHit hit)
     {
-        stateManager.actionButton.SetActive(true);
         this.hit = hit;
         action = OnCoverAction;
     }
@@ -199,7 +203,6 @@ public class WalkOnGround : Walk, ICheckGround
         }
         else
         {
-            Debug.Log("地面から浮いたよ！");
             stateManager.ChangeState(new AirWalk(stateManager));
         }
     }

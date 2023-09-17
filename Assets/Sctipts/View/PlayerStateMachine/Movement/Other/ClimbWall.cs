@@ -27,7 +27,6 @@ public class ClimbWall : MovementState
     {
         if (MaxClimbSpeed < 0)
         {
-            Debug.Log("Speed‚ªƒ[ƒ‚É");
             CancelWall();
         }
         else
@@ -47,9 +46,17 @@ public class ClimbWall : MovementState
             stateManager.rb.velocity = Vector3.ClampMagnitude(stateManager.rb.velocity, MaxClimbSpeed);
         }
         //•Ç‚ª‚È‚­‚È‚Á‚½‚ç‚â‚ß‚é—p
-        if (!Physics.Raycast(stateManager.camTransform.position, stateManager.camTransform.forward, 3.5f, Physics.AllLayers, QueryTriggerInteraction.Ignore))
+        var headOnWall = Physics.Raycast(stateManager.camTransform.position, stateManager.camTransform.forward, 3.5f, Physics.AllLayers, QueryTriggerInteraction.Ignore);
+        var footOnWall = Physics.Raycast(stateManager.camTransform.position + Vector3.up * -0.5f, stateManager.camTransform.forward, 3.5f, Physics.AllLayers, QueryTriggerInteraction.Ignore);
+        if (!headOnWall && footOnWall)
         {
-            Debug.Log("•Ç‚ª‚È‚¢‚Å‚·");
+            Debug.Log("‘«‚¾‚¯•Ç‚È‚¢");
+            stateManager.rb.AddForce(new(0f, 10f, 0f));
+            CancelWall();
+        }
+        else if(!headOnWall && !footOnWall)
+        {
+            Debug.Log("‚Ó‚Â‚¤‚É‚©‚×‚È‚¢");
             CancelWall();
         }
 
@@ -72,7 +79,6 @@ public class ClimbWall : MovementState
 
     public override void OnPerformDown(InputAction.CallbackContext ctx)
     {
-        Debug.Log("‚µ‚á‚ª‚ñ‚¾‚Ì‚Å");
         CancelWall();
     }
 
@@ -91,7 +97,6 @@ public class ClimbWall : MovementState
             refrectVector.y += 0.3f;
             stateManager.rb.AddForce(refrectVector * 1000, ForceMode.Acceleration);
         }
-        Debug.Log("•ÇƒWƒƒƒ“‚µ‚½‚Ì‚Å");
         CancelWall();
     }
 

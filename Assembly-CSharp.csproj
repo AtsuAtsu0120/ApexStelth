@@ -66,6 +66,7 @@
     <Compile Include="Assets\Sctipts\LogicModel\Mission\Mission.cs" />
     <Compile Include="Assets\Sctipts\View\PlayerStateMachine\Movement\Ground\Sprint.cs" />
     <Compile Include="Assets\Sctipts\View\PlayerStateMachine\Viewpoint\WallViewpoint.cs" />
+    <Compile Include="Assets\Sctipts\View\StartScreen.cs" />
     <Compile Include="Assets\Sctipts\View\Player.cs" />
     <Compile Include="Assets\Sctipts\View\CharacterController.cs" />
     <Compile Include="Assets\Sctipts\View\PlayerStateMachine\Movement\Other\Cover.cs" />
@@ -99,7 +100,9 @@
     <Compile Include="Assets\Sctipts\View\PlayerStateMachine\Movement\Ground\WalkOnGround.cs" />
     <Compile Include="Assets\Sctipts\View\ObjectCompoents\BuildingsEnterDoor.cs" />
     <Compile Include="Assets\Sctipts\View\ObjectCompoents\LockedDoor.cs" />
+    <Compile Include="Assets\Sctipts\View\ObjectCompoents\Withdrawal.cs" />
     <Compile Include="Assets\Sctipts\View\PlayerStateMachine\Movement\Ground\Crouch.cs" />
+    <Compile Include="Assets\Sctipts\View\EventArea\MisteryEventArea.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
