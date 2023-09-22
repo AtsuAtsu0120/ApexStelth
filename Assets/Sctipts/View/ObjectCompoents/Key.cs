@@ -6,6 +6,12 @@ using UnityEngine;
 public class Key : MonoBehaviour, IActionable
 {
     public string guid { get; private set; } = Guid.NewGuid().ToString();
+
+    public bool EnableAction()
+    {
+        return true;
+    }
+
     public void OnActionKey()
     {
         Debug.Log("Key‚ğæ“¾‚µ‚Ü‚µ‚½B");

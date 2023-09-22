@@ -47,8 +47,6 @@ public abstract class Walk : MovementState
         stateManager.rb.AddForce(verticalForce, ForceMode.Acceleration);
         stateManager.rb.AddForce(horizontalForce, ForceMode.Acceleration);
 
-        stateManager.rb.AddForce(new(0, Physics.gravity.y, 0), ForceMode.Acceleration);
-
         var forceLocalDirection = transform.InverseTransformDirection(verticalForce);
         //方向によって速度ボーナスを与えれる。
         var isStraight = false;

@@ -6,8 +6,8 @@
 /Assets/VisualAssets
 /obj
 
-/.vs
-/.vscode
+*.vs
+*.vscode
 *.vsconfig
 *.sln
 *.csproj

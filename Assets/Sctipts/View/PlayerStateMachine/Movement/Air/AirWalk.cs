@@ -19,6 +19,8 @@ public class AirWalk : Walk, ICheckGround
     {
         base.OnFixedUpdate();
 
+        stateManager.rb.AddForce(new(0, Physics.gravity.y, 0), ForceMode.Acceleration);
+
         //ê›íuîªíË
         CheckGround();
 

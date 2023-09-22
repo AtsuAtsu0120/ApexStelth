@@ -1,11 +1,9 @@
-using System.ComponentModel.Design.Serialization;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class WalkOnGround : Walk, ICheckGround
 {
-    private float JumpPower = 500.0f;
+    private float JumpPower = 100.0f;
     private CapsuleCollider collider;
     private RaycastHit hit;
     private Side facingSide;
@@ -90,8 +88,11 @@ public class WalkOnGround : Walk, ICheckGround
             //カバー以外のアクション可能オブジェクト
             if(hit.transform.TryGetComponent<IActionable>(out var component))
             {
-                action = component.OnActionKey;
-                enableAction = true;
+                if (component.EnableAction())
+                {
+                    action = component.OnActionKey;
+                    enableAction = true;
+                }
             }
             //カバー
             else

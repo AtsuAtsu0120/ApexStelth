@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Test.unity
     guid: 12335f5fca3ea5047a9ec6b57adb725f
+  - enabled: 1
+    path: Assets/Scenes/Stages/1-Porison.unity
+    guid: dc91e29642c5e3c40abc3cae13117c1d
   m_configObjects: {}

@@ -5,4 +5,5 @@ using UnityEngine;
 public interface IActionable
 {
     void OnActionKey();
+    bool EnableAction();
 }

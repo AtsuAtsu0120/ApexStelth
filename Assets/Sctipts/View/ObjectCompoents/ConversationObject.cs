@@ -7,6 +7,11 @@ public class ConversationObject : MonoBehaviour, IActionable
     [SerializeField] ConversationGraphAsset asset;
     [SerializeField] ConversationSystemUGUI conversationSystem;
 
+    public bool EnableAction()
+    {
+        return true;
+    }
+
     public virtual void OnActionKey()
     {
         conversationSystem.SetConversationAsset(asset);

@@ -15,6 +15,7 @@ public class CharacterStateManager : MonoBehaviour
     private InputAction sprintAction;
     private InputAction action;
     private InputAction playerChange;
+    private InputAction openInventry;
 
     private bool isInited = false;
 
@@ -63,6 +64,7 @@ public class CharacterStateManager : MonoBehaviour
             sprintAction = actions.Player.Sprint;
 
             action = actions.Player.Action;
+            openInventry = actions.Player.Inventory;
             playerChange = actions.Player.PlayerChange;
 
             upAction.Enable();
@@ -70,8 +72,10 @@ public class CharacterStateManager : MonoBehaviour
             sprintAction.Enable();
             action.Enable();
             playerChange.Enable();
+            openInventry.Enable();
 
             playerChange.performed += GameViewMaster.Instance.ChangePlayer;
+            openInventry.performed += GameViewMaster.Instance.ChangeActiveInventory;
             //‚±‚±‚Ü‚Å
 
             PlayerAudioManager.Instance.ChangeActivePlayer();
@@ -89,6 +93,11 @@ public class CharacterStateManager : MonoBehaviour
         ChangeState(new AirWalk(this));
 
         currentViewpointState = new NormalViewpoint(this);
+    }
+
+    private void OpenInventry_performed(InputAction.CallbackContext obj)
+    {
+        throw new System.NotImplementedException();
     }
 
     private void Update()

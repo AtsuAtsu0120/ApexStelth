@@ -34,11 +34,11 @@
       "hash": "48c4be9fdc18af7deff7aa56137eaa20cdd6c61a"
     },
     "com.unity.addressables": {
-      "version": "1.21.15",
+      "version": "1.21.17",
       "depth": 2,
       "source": "registry",
       "dependencies": {
-        "com.unity.scriptablebuildpipeline": "1.21.8",
+        "com.unity.scriptablebuildpipeline": "1.21.9",
         "com.unity.modules.assetbundle": "1.0.0",
         "com.unity.modules.imageconversion": "1.0.0",
         "com.unity.modules.jsonserialize": "1.0.0",
@@ -125,7 +125,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.inputsystem": {
-      "version": "1.6.3",
+      "version": "1.7.0",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -180,7 +180,7 @@
       }
     },
     "com.unity.scriptablebuildpipeline": {
-      "version": "1.21.8",
+      "version": "1.21.9",
       "depth": 3,
       "source": "registry",
       "dependencies": {},
@@ -305,6 +305,15 @@
         "com.unity.modules.jsonserialize": "1.0.0"
       },
       "url": "https://packages.unity.com"
+    },
+    "me.qiankanglai.loopscrollrect": {
+      "version": "https://github.com/qiankanglai/LoopScrollRect.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.ugui": "1.0.0"
+      },
+      "hash": "b637acab5942ae4ba5229daacd1721898c5f6c2b"
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",

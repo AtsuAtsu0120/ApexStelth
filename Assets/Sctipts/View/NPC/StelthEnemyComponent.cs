@@ -2,31 +2,12 @@ using UnityEngine;
 
 public class StelthEnemyComponent : StelthNPC
 {
-    private bool isReseted = false;
     private bool isQuitting = false;
 
-    public bool ShotConfirmeRaycast()
+    public override void Start()
     {
-        //敵がプレイヤーを見つける用の処理
-        if(Physics.BoxCast(transform.position + Vector3.up * 0.5f, new Vector3(50f, 0.2f, 0.2f), transform.forward, out var hit, Quaternion.identity, 10.0f, 1 << 6, QueryTriggerInteraction.Ignore))
-        {
-            if (StelthUtility.IsHitInAngle(hit.transform, transform, 1.4f, 0.6f))
-            {
-                //DeltaTimeじゃないほうがいい説ある。
-                GameLogicMaster.Instance.StartConfirmePlayerByEnemyJob(Time.deltaTime);
-                isReseted = true;
-            }
-            return true;
-        }
-        else
-        {
-            if(isReseted)
-            {
-                isReseted = false;
-                GameLogicMaster.Instance.StartResetConfirmedPercent();
-            }
-            return false;
-        }
+        base.Start();
+        isVigilance = true;
     }
     public void OnApplicationQuit()
     {

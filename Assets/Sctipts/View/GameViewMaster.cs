@@ -18,9 +18,13 @@ public class GameViewMaster : SingletonMonoBehaviour<GameViewMaster>
     [SerializeField] private Transform player2SpawnPoint;
 
     [SerializeField] private GameObject textUI;
+    [SerializeField] private GameObject normalGUi;
+    [SerializeField] private GameObject inventory;
 
     [SerializeField] private GameObject missionPrefab;
     [SerializeField] private GameObject missionParent;
+
+    [SerializeField] private TextMeshProUGUI item;
 
     private Player player1;
     private Player player2;
@@ -83,6 +87,28 @@ public class GameViewMaster : SingletonMonoBehaviour<GameViewMaster>
             GameLogicMaster.Instance.IsPlayer1Active = true;
         }
     }
+    public void ChangeActiveInventory(CallbackContext _)
+    {
+        var nowActiveSelf = inventory.activeSelf;
+
+        inventory.SetActive(!nowActiveSelf);
+        normalGUi.SetActive(nowActiveSelf);
+
+        if (nowActiveSelf)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+
+            Time.timeScale = 1;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
+            Time.timeScale = 0;
+        }
+    }
     public void UpdateMissonView()
     {
         foreach (var mission in GameLogicMaster.Instance.stageInfo.Missions)
@@ -96,5 +122,9 @@ public class GameViewMaster : SingletonMonoBehaviour<GameViewMaster>
             texts[0].text = mission.Name;
             texts[1].text = mission.Description;
         }
+    }
+    public void UpdateItem(string name)
+    {
+        item.text = $"éùÇøï® : {name}";
     }
 }

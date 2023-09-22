@@ -3,20 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(StelthAudio))]
 public class Door : MonoBehaviour, IActionable
 {
     public Animator animator;
+    private StelthAudio stelthAudio;
+
+    public void Start()
+    {
+        stelthAudio = GetComponent<StelthAudio>();
+    }
+    public bool EnableAction()
+    {
+        return true;
+    }
+
     public virtual void OnActionKey()
     {
-        Debug.Log("Open");
-        animator.SetTrigger("Open");
+        DoorOpen();
     }
     public void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.tag);
-        if(other.CompareTag("NPC"))
+        if(other.CompareTag("NPC") && other.isTrigger == false)
         {
-            animator.SetTrigger("Open");
+            DoorOpen();
         }
+    }
+    public void DoorOpen()
+    {
+        stelthAudio.Play();
+        animator.SetTrigger("Open");
     }
 }

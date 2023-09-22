@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     public ReadOnlyCollection<StelthEnemyComponent> NearEnemies { get; private set; }
 
     public List<Key> hasKeys { get; private set; } = new();
+    public List<Item> hasItems { get; private set; } = new();
 
     private int playerNumber;
     protected void Awake()
@@ -59,7 +60,8 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.TryGetComponent<StelthEnemyComponent>(out var component))
+        var parent = other.transform.parent;
+        if (parent != null && parent.TryGetComponent<StelthEnemyComponent>(out var component))
         {
             if (!_nearEnemies.Contains(component))
             {

@@ -36,8 +36,8 @@ public class GameLogicMaster : PureSingleton<GameLogicMaster>
     {
         resetConfirmedPercentCancellationToken?.Cancel();
         if (ConfirmedPercent >= 5) 
-        { 
-            Debug.Log("見つかったよ！");
+        {
+            GameOver();
             return;
         }
 
@@ -91,6 +91,10 @@ public class GameLogicMaster : PureSingleton<GameLogicMaster>
         }
         ConfirmedPercent = 0;
     }
+    public void GameOver()
+    {
+        Debug.Log("ゲームオーバー");
+    }
     #region Jobs
     [BurstCompile]
     public struct ConfirmePlayerByEnemy : IJob
@@ -115,10 +119,6 @@ public class GameLogicMaster : PureSingleton<GameLogicMaster>
         {
             result[0] = confirmedPercent - 0.05f;
         }
-    }
-    public void ChangeMissionView()
-    {
-
     }
     #endregion
 }
