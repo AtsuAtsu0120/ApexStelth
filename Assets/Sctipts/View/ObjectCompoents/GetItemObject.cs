@@ -6,16 +6,17 @@ public class GetItemObject : MonoBehaviour, IActionable
 {
     [SerializeField] private Item item;
 
-    public bool EnableAction()
+    public (bool, string) EnableAction()
     {
-        return true;
+        return (true, $"{item.name}ÇèEÇ§");
     }
 
     public void OnActionKey()
     {
         var player = GameViewMaster.Instance.GetActivePlayerComponent();
-        GameViewMaster.Instance.UpdateItem(item.name);
         player.hasItems.Add(item);
+
+        GameViewMaster.Instance.UpdateItem(item.name);
 
         Destroy(gameObject);
     }

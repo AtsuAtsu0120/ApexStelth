@@ -1,4 +1,3 @@
-using Cysharp.Threading.Tasks;
 using Prashalt.Unity.ConversationGraph.Conponents;
 using Prashalt.Unity.Utility.Superclass;
 using TMPro;
@@ -25,6 +24,8 @@ public class GameViewMaster : SingletonMonoBehaviour<GameViewMaster>
     [SerializeField] private GameObject missionParent;
 
     [SerializeField] private TextMeshProUGUI item;
+
+    [SerializeField] private InventoryScroll scroll;
 
     private Player player1;
     private Player player2;
@@ -87,7 +88,7 @@ public class GameViewMaster : SingletonMonoBehaviour<GameViewMaster>
             GameLogicMaster.Instance.IsPlayer1Active = true;
         }
     }
-    public void ChangeActiveInventory(CallbackContext _)
+    public void ChangeActiveInventory()
     {
         var nowActiveSelf = inventory.activeSelf;
 
@@ -125,6 +126,8 @@ public class GameViewMaster : SingletonMonoBehaviour<GameViewMaster>
     }
     public void UpdateItem(string name)
     {
+        scroll.scrollRect.totalCount = GetActivePlayerComponent().hasItems.Count;
+        scroll.scrollRect.RefillCells();
         item.text = $"éùÇøï® : {name}";
     }
 }

@@ -13,9 +13,9 @@ public class Door : MonoBehaviour, IActionable
     {
         stelthAudio = GetComponent<StelthAudio>();
     }
-    public bool EnableAction()
+    public (bool, string) EnableAction()
     {
-        return true;
+        return (true, "ƒhƒA‚ðŠJ‚¯‚é");
     }
 
     public virtual void OnActionKey()

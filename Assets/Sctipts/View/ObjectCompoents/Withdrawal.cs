@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Withdrawal : MonoBehaviour, IActionable
 {
-    public bool EnableAction()
+    public (bool, string) EnableAction()
     {
-        return true;
+        return (true, "’Eo‚·‚éB");
     }
 
     public void OnActionKey()

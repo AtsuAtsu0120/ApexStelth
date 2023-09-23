@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Sctipts\View\PlayerStateMachine\Viewpoint\CrouchViewpoint.cs" />
+    <Compile Include="Assets\Sctipts\View\PlayerStateMachine\Viewpoint\LockViewPoint.cs" />
     <Compile Include="Assets\Sctipts\View\PlayerStateMachine\MovementState.cs" />
     <Compile Include="Assets\Sctipts\LogicModel\Interface\IActionable.cs" />
     <Compile Include="Assets\Sctipts\View\ObjectCompoents\Key.cs" />
@@ -73,7 +74,6 @@
     <Compile Include="Assets\Sctipts\View\PlayerStateMachine\Movement\Other\Cover.cs" />
     <Compile Include="Assets\Sctipts\Others\Item.cs" />
     <Compile Include="Assets\Sctipts\Test.cs" />
-    <Compile Include="Assets\Sctipts\View\Inventory.cs" />
     <Compile Include="Assets\Sctipts\LogicModel\Stage\Stage.cs" />
     <Compile Include="Assets\Sctipts\LogicModel\GameLogicMaster.cs" />
     <Compile Include="Assets\Sctipts\View\PlayerStateMachine\Movement\Air\AirAfterClimb.cs" />
@@ -866,8 +866,8 @@
     <Reference Include="UniTask.Addressables">
       <HintPath>Library\ScriptAssemblies\UniTask.Addressables.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.ShaderGraph.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll</HintPath>
+    <Reference Include="LoopScrollRect.Runtime">
+      <HintPath>Library\ScriptAssemblies\LoopScrollRect.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
@@ -875,8 +875,8 @@
     <Reference Include="Unity.Localization">
       <HintPath>Library\ScriptAssemblies\Unity.Localization.dll</HintPath>
     </Reference>
-    <Reference Include="LoopScrollRect.Runtime">
-      <HintPath>Library\ScriptAssemblies\LoopScrollRect.Runtime.dll</HintPath>
+    <Reference Include="Unity.ShaderGraph.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>

@@ -7,9 +7,9 @@ public class Key : MonoBehaviour, IActionable
 {
     public string guid { get; private set; } = Guid.NewGuid().ToString();
 
-    public bool EnableAction()
+    public (bool, string) EnableAction()
     {
-        return true;
+        return (true, "Œ®‚ð“üŽè");
     }
 
     public void OnActionKey()

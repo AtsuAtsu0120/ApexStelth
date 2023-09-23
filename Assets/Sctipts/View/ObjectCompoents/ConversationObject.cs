@@ -7,9 +7,9 @@ public class ConversationObject : MonoBehaviour, IActionable
     [SerializeField] ConversationGraphAsset asset;
     [SerializeField] ConversationSystemUGUI conversationSystem;
 
-    public bool EnableAction()
+    public (bool, string) EnableAction()
     {
-        return true;
+        return (true, "òbÇµÇ©ÇØÇÈÅB");
     }
 
     public virtual void OnActionKey()

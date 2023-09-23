@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Pool;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(LoopScrollRect))]
@@ -7,14 +8,27 @@ public class InventoryScroll : MonoBehaviour, LoopScrollPrefabSource, LoopScroll
 {
     public GameObject prefab;
 
-    private LoopScrollRect scrollRect;
+    public LoopScrollRect scrollRect { get; private set; }
+
+    private ObjectPool<GameObject> pool;
     public void Start()
     {
+        pool = new ObjectPool<GameObject>
+            (
+                () => Instantiate(prefab),
+                obj => obj.SetActive(true),
+                obj =>
+                {
+                    obj.transform.SetParent(transform);
+                    obj.SetActive(false);
+                }
+            );
+
         scrollRect = GetComponent<LoopScrollRect>();
 
         scrollRect.prefabSource = this;
         scrollRect.dataSource = this;
-        scrollRect.totalCount = 100;/*GameViewMaster.Instance.GetActivePlayerComponent().hasItems.Count;*/
+        scrollRect.totalCount = GameViewMaster.Instance.GetActivePlayerComponent().hasItems.Count;
         scrollRect.RefillCells();
     }
     /// <summary>
@@ -25,8 +39,7 @@ public class InventoryScroll : MonoBehaviour, LoopScrollPrefabSource, LoopScroll
     /// <exception cref="System.NotImplementedException"></exception>
     public GameObject GetObject(int index)
     {
-        Debug.Log(index);
-        return Instantiate(prefab);
+        return pool.Get();
     }
 
     /// <summary>
@@ -37,7 +50,9 @@ public class InventoryScroll : MonoBehaviour, LoopScrollPrefabSource, LoopScroll
     /// <exception cref="System.NotImplementedException"></exception>
     public void ProvideData(Transform transform, int index)
     {
-        transform.GetComponentInChildren<TextMeshProUGUI>().text = index.ToString();
+        var items = GameViewMaster.Instance.GetActivePlayerComponent().hasItems;
+
+        transform.GetComponentInChildren<TextMeshProUGUI>().text = items[index].name;
     }
 
     /// <summary>
@@ -47,6 +62,6 @@ public class InventoryScroll : MonoBehaviour, LoopScrollPrefabSource, LoopScroll
     /// <exception cref="System.NotImplementedException"></exception>
     public void ReturnObject(Transform trans)
     {
-        Destroy(trans.gameObject);
+        pool.Release(trans.gameObject);
     }
 }

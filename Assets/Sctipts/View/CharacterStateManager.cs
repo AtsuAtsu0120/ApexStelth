@@ -1,6 +1,8 @@
+using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEngine.InputSystem.InputAction;
 
 public class CharacterStateManager : MonoBehaviour
 {
@@ -31,7 +33,11 @@ public class CharacterStateManager : MonoBehaviour
 
     public GameObject actionButton;
 
+    public TextMeshProUGUI actionText;
+
     public Animator animator;
+
+    private ViewpointState previousViewpoint;
 
     #endregion
 
@@ -51,6 +57,8 @@ public class CharacterStateManager : MonoBehaviour
 
         if (!isInited)
         {
+            actionText = actionButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+
             //InputSystemÇÃèâä˙âª
             GameLogicMaster.Instance.Actions ??= new();
             actions = GameLogicMaster.Instance.Actions;
@@ -75,7 +83,7 @@ public class CharacterStateManager : MonoBehaviour
             openInventry.Enable();
 
             playerChange.performed += GameViewMaster.Instance.ChangePlayer;
-            openInventry.performed += GameViewMaster.Instance.ChangeActiveInventory;
+            openInventry.performed += OnChangeGUI;
             //Ç±Ç±Ç‹Ç≈
 
             PlayerAudioManager.Instance.ChangeActivePlayer();
@@ -154,5 +162,19 @@ public class CharacterStateManager : MonoBehaviour
         currentViewpointState?.OnExit();
         currentViewpointState = state;
         currentViewpointState.OnEnter();
+    }
+    public void OnChangeGUI(CallbackContext _)
+    {
+        GameViewMaster.Instance.ChangeActiveInventory();
+        if(currentViewpointState.GetType() == typeof(LockViewPoint))
+        {
+            ChangeViewPointState(previousViewpoint);
+        }
+        else
+        {
+            previousViewpoint = currentViewpointState;
+            ChangeViewPointState(new LockViewPoint(this));
+        }
+
     }
 }

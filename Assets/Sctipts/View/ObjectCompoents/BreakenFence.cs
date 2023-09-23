@@ -4,9 +4,18 @@ using UnityEngine;
 
 public class BreakenFence : MonoBehaviour, IActionable
 {
-    public bool EnableAction()
+    public (bool, string) EnableAction()
     {
-        return GameViewMaster.Instance.GetActivePlayerComponent().hasItems.Exists(x => x.name == "Wrench");
+        var hasItem = GameViewMaster.Instance.GetActivePlayerComponent().hasItems.Exists(x => x.name == "Wrench"); ;
+        if(hasItem)
+        {
+            return (true, "‰ó‚·");
+        }
+        else
+        {
+            return (false, "Wrench‚ª•K—v");
+        }
+       
     }
 
     public void OnActionKey()

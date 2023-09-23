@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -88,11 +89,13 @@ public class WalkOnGround : Walk, ICheckGround
             //カバー以外のアクション可能オブジェクト
             if(hit.transform.TryGetComponent<IActionable>(out var component))
             {
-                if (component.EnableAction())
+                var (actinable, message) = component.EnableAction();
+                enableAction = true;
+                if (actinable)
                 {
                     action = component.OnActionKey;
-                    enableAction = true;
                 }
+                stateManager.actionText.text = message;
             }
             //カバー
             else
@@ -114,6 +117,7 @@ public class WalkOnGround : Walk, ICheckGround
                 if (distance > hitObjectEdgeDirection)
                 {
                     OnAbleCover(hit);
+                    stateManager.actionText.text = "Cover";
                 }
                 else
                 {
