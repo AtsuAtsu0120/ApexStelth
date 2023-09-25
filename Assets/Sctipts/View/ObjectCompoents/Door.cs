@@ -9,11 +9,11 @@ public class Door : MonoBehaviour, IActionable
     public Animator animator;
     private StelthAudio stelthAudio;
 
-    public void Start()
+    public virtual void Start()
     {
         stelthAudio = GetComponent<StelthAudio>();
     }
-    public (bool, string) EnableAction()
+    public virtual (bool, string) EnableAction()
     {
         return (true, "ƒhƒA‚ðŠJ‚¯‚é");
     }

@@ -23,7 +23,8 @@ public class GameViewMaster : SingletonMonoBehaviour<GameViewMaster>
     [SerializeField] private GameObject missionPrefab;
     [SerializeField] private GameObject missionParent;
 
-    [SerializeField] private TextMeshProUGUI item;
+    [SerializeField] public GameObject gameOver;
+    [SerializeField] public GameObject clear;
 
     [SerializeField] private InventoryScroll scroll;
 
@@ -128,6 +129,14 @@ public class GameViewMaster : SingletonMonoBehaviour<GameViewMaster>
     {
         scroll.scrollRect.totalCount = GetActivePlayerComponent().hasItems.Count;
         scroll.scrollRect.RefillCells();
-        item.text = $"éùÇøï® : {name}";
+    }
+    public void OnClear()
+    {
+        clear.SetActive(true);
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        Time.timeScale = 0;
     }
 }

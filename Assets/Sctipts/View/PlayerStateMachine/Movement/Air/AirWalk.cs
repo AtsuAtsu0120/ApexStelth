@@ -30,18 +30,18 @@ public class AirWalk : Walk, ICheckGround
         }
         base.OnFixedUpdate();
 
-        //•Ç‚Ì‚Ú‚è
-        var offsetY = 0.5f;
-        var distance = 3.0f;
-        var direction = transform.forward;
-        if (stateManager.rb.velocity.y > 0 && 1.5f > stateManager.rb.velocity.y)
-        {
-            if (Physics.Raycast(transform.position + Vector3.up * offsetY, direction, out var hit, distance + 0.5f, Physics.AllLayers, QueryTriggerInteraction.Ignore))
-            {
-                stateManager.ChangeState(new ClimbWall(stateManager, hit));
-                stateManager.ChangeViewPointState(new WallViewpoint(stateManager));
-            }
-        }
+        ////•Ç‚Ì‚Ú‚è
+        //var offsetY = 0.5f;
+        //var distance = 3.0f;
+        //var direction = transform.forward;
+        //if (stateManager.rb.velocity.y > 0 && 1.5f > stateManager.rb.velocity.y)
+        //{
+        //    if (Physics.Raycast(transform.position + Vector3.up * offsetY, direction, out var hit, distance + 0.5f, Physics.AllLayers, QueryTriggerInteraction.Ignore))
+        //    {
+        //        stateManager.ChangeState(new ClimbWall(stateManager, hit));
+        //        stateManager.ChangeViewPointState(new WallViewpoint(stateManager));
+        //    }
+        //}
     }
     public override void OnPerformDown(InputAction.CallbackContext ctx)
     {

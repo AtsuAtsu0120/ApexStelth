@@ -12,6 +12,7 @@ public class PlayerAudioManager : SingletonMonoBehaviour<PlayerAudioManager>
     [SerializeField] private AudioClip meadowFootStep;
     [Header("Other Clips")]
     [SerializeField] private AudioClip windNoise;
+    [SerializeField] private AudioClip getItem;
 
     public void ChangeActivePlayer()
     {
@@ -51,6 +52,10 @@ public class PlayerAudioManager : SingletonMonoBehaviour<PlayerAudioManager>
     public void StopFootStep()
     {
         activeAudioSource.Pause();
+    }
+    public void PlayGetItem()
+    {
+        activeAudioSource.PlayOneShot(getItem);
     }
     public bool GetAudioSourcePlaying()
     {

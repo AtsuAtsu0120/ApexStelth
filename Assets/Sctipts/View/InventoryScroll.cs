@@ -30,6 +30,8 @@ public class InventoryScroll : MonoBehaviour, LoopScrollPrefabSource, LoopScroll
         scrollRect.dataSource = this;
         scrollRect.totalCount = GameViewMaster.Instance.GetActivePlayerComponent().hasItems.Count;
         scrollRect.RefillCells();
+
+        transform.parent.gameObject.SetActive(false);
     }
     /// <summary>
     /// 新しくゲームオブジェクトが必要になったときに呼ばれる。

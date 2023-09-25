@@ -13,6 +13,7 @@ public class GetItemObject : MonoBehaviour, IActionable
 
     public void OnActionKey()
     {
+        PlayerAudioManager.Instance.PlayGetItem();
         var player = GameViewMaster.Instance.GetActivePlayerComponent();
         player.hasItems.Add(item);
 

@@ -5,6 +5,7 @@
 /UserSettings
 /Assets/VisualAssets
 /obj
+/Builds
 
 *.vs
 *.vscode

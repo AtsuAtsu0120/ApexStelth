@@ -95,10 +95,12 @@
     <Compile Include="Assets\Settings\StelthInputActions.cs" />
     <Compile Include="Assets\Sctipts\View\CharacterStateManager.cs" />
     <Compile Include="Assets\Sctipts\View\PlayerStateMachine\Viewpoint\ViewPointAfterCrouch.cs" />
+    <Compile Include="Assets\Sctipts\View\Movie.cs" />
     <Compile Include="Assets\Sctipts\View\NPC\StelthEnemyComponent.cs" />
     <Compile Include="Assets\Sctipts\View\NPC\StelthNPC.cs" />
     <Compile Include="Assets\Sctipts\View\PlayerStateMachine\Viewpoint\NormalViewpoint.cs" />
     <Compile Include="Assets\Sctipts\LogicModel\Mission\Stage1Mission.cs" />
+    <Compile Include="Assets\Sctipts\View\GameOver.cs" />
     <Compile Include="Assets\Sctipts\View\Audio\StelthAudio.cs" />
     <Compile Include="Assets\Sctipts\Others\StelthUtility.cs" />
     <Compile Include="Assets\Sctipts\View\PlayerStateMachine\ViewpointState.cs" />

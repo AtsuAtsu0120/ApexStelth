@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Key : MonoBehaviour, IActionable
@@ -14,7 +12,9 @@ public class Key : MonoBehaviour, IActionable
 
     public void OnActionKey()
     {
-        Debug.Log("Key‚ğæ“¾‚µ‚Ü‚µ‚½B");
+        PlayerAudioManager.Instance.PlayGetItem();
         GameViewMaster.Instance.GetActivePlayerComponent().hasKeys.Add(this);
+
+        Destroy(gameObject);
     }
 }

@@ -93,7 +93,7 @@ public class GameLogicMaster : PureSingleton<GameLogicMaster>
     }
     public void GameOver()
     {
-        Debug.Log("ゲームオーバー");
+        GameViewMaster.Instance.gameOver.SetActive(true);
     }
     #region Jobs
     [BurstCompile]

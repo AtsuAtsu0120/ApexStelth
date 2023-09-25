@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 public class WalkOnGround : Walk, ICheckGround
 {
-    private float JumpPower = 100.0f;
+    private float JumpPower = 200.0f;
     private CapsuleCollider collider;
     private RaycastHit hit;
     private Side facingSide;

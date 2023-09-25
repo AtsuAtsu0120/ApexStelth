@@ -14,7 +14,7 @@ public class FoundMistery : Mission
 
     public override void OnComplete()
     {
-        
+        base.OnComplete();
     }
 }
 public class MeetTarget : Mission
