@@ -5,3 +5,6 @@
 正直、プログラム面もゲームシステム面も満足はいっていないが、ここに１つの作品として供養。
 
 ※アセットはアセットストアから購入しているものを使用しているので、プロジェクトに含まれていません。
+
+# ダウンロード
+https://github.com/AtsuAtsu0120/MadeByAtsuAtsu/blob/main/ApexStelth.zip
